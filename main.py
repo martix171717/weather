@@ -10,7 +10,7 @@ def index():
 
 @app.route('/temperature', methods=['POST'])
 def temperature():
-    city_name = request.form['city']
+    city_name =request.form['city']
     API_Key = '386df314be53675038e1916ba83dcee8'
     base_url = "https://api.openweathermap.org/data/2.5/weather?"+"appid=" + API_Key+ "&q="+ city_name
     now = datetime.now()
@@ -22,10 +22,14 @@ def temperature():
         temp_feel = int(int(json_object['main']['feels_like'])-273.15)
         wind = int(json_object['wind']['speed']*3.6)
         pressure= json_object['main']['pressure']
+        hum = json_object['main']['humidity']
+        desc = json_object['weather'][0]['description']
+        cloud = json_object['clouds']['all']
+        country = json_object['sys']['country']
     except KeyError:
         return render_template('keyerror.html', city_name = city_name)
     return render_template('temperature.html', temp = temp, city_name = city_name, temp_feel=temp_feel, \
-        wind=wind, pressure=pressure, dt_string=dt_string)
+        wind=wind, pressure=pressure, dt_string=dt_string, hum=hum, desc=desc, cloud=cloud, country=country)
 
 
 if __name__ == '__main__':
