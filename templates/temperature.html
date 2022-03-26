@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="card h-100">
+    <div class="card-body">
+      <h4 class="card-title">{{city_name}}</h4>
+      <p class="card-text font-weight-light">{{dt_string}} </p>
+      <h2 class="card-text">{{temp}} ℃</h2>
+      <p class="card-text"><i>Feels like temperature:</i> <b>{{temp_feel}} ℃</b></p>
+      <p class="card-text"><i>Wind:</i> <b>{{wind}} km/h</b></p>
+      <p class="card-text"><i>Pressure:</i> <b>{{pressure}} hPa</b></p>
+      <a href="/" class="btn btn-outline-primary">Go to Homepage</a>
+    </div>
+  </div>
+
+ 
+{% endblock %}
