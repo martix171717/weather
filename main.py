@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import requests
 from datetime import datetime
+import getting_url
 
 app = Flask(__name__)
 
@@ -30,6 +31,12 @@ def temperature():
         return render_template('keyerror.html', city_name = city_name)
     return render_template('temperature.html', temp = temp, city_name = city_name, temp_feel=temp_feel, \
         wind=wind, pressure=pressure, dt_string=dt_string, hum=hum, desc=desc, cloud=cloud, country=country)
+
+@app.context_processor
+def utility_processor():
+    def get_icon_url(icon):
+        return getting_url.get_url(icon)
+    return {"get_icon_url": get_icon_url}
 
 
 if __name__ == '__main__':
