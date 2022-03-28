@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import requests
 from datetime import datetime
+import time
 import getting_url
 
 app = Flask(__name__)
@@ -27,10 +28,13 @@ def temperature():
         desc = json_object['weather'][0]['description']
         cloud = json_object['clouds']['all']
         country = json_object['sys']['country']
+        sunrise = time.strftime("%H:%M", time.localtime(int(json_object['sys']['sunrise'])))
+        sunset = time.strftime("%H:%M", time.localtime(int(json_object['sys']['sunset'])))
     except KeyError:
         return render_template('keyerror.html', city_name = city_name)
     return render_template('temperature.html', temp = temp, city_name = city_name, temp_feel=temp_feel, \
-        wind=wind, pressure=pressure, dt_string=dt_string, hum=hum, desc=desc, cloud=cloud, country=country)
+        wind=wind, pressure=pressure, dt_string=dt_string, hum=hum, desc=desc, cloud=cloud, country=country,\
+            sunrise = sunrise, sunset=sunset)
 
 @app.context_processor
 def utility_processor():

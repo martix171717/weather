@@ -7,7 +7,7 @@
       <div class="card-body">
         <h5 class="card-title text-capitalize">{{city_name}}, {{country}}</h5>
       <p class="card-text font-weight-light">{{dt_string}} </p>
-      <img class="img-fluid" src="{{ get_icon_url(icon)}}" alt="">
+      <img class="img-fluid mb-1" src="{{ get_icon_url(icon)}}" alt="">
       <p class="card-text"><i>{{desc}}</i></p>
       <a href="/" class="btn btn-outline-primary mt-1">Go to Homepage</a>
     </div>
@@ -16,13 +16,16 @@
     <div class="card-body mt-4">
     <h2 class="card-text mb-4">{{temp}} ℃</h2>
     <p class="card-text"><i>Feels like:</i> <b>{{temp_feel}} ℃</b></p>
-    <p class="card-text "><i>Wind:</i> <b>{{wind}} km/h</b></p>
-    <p class="card-text"><i>Pressure:</i> <b>{{pressure}}hPa</b></p>
+    <p class="card-text"><i>Sunrise:</i> <b>{{sunrise}} </b></p>
+    <p class="card-text"><i>Sunset:</i> <b>{{sunset}} </b></p>
   </div>
 </div>
 <div class="card border-0 text-left">
-  <div class="card-body mt-4">
-  <p class="card-text mt-5"><i>Cloudiness:</i> <b>{{cloud}} %</b></p>
+  <div class="card-body">
+  <br>
+  <p class="card-text "><i>Wind:</i> <b>{{wind}} km/h</b></p>
+  <p class="card-text"><i>Pressure:</i> <b>{{pressure}}hPa</b></p>
+  <p class="card-text mt-4.5"><i>Cloudiness:</i> <b>{{cloud}} %</b></p>
   <p class="card-text"><i>Humidity:</i> <b>{{hum}} %</b></p>
 </div>
 </div>
